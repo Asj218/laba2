@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+    //функция для вычисления и возвращения результата
     private fun calculateSeries(epsilon: Double): Triple<Double, Double, Int> {
         var sum = 1.0
         var lastTerm = 1.0
@@ -50,12 +51,11 @@ class MainActivity : AppCompatActivity() {
         var n = 2 // Начинаем с 1/4
 
         while (abs(lastTerm) >= epsilon) {
-            lastTerm = 1.0 / (n * n)
-            sum += lastTerm
-            iterations++
-            n++
+            lastTerm = 1.0 / (n * n) //вычисляем слогаемое
+            sum += lastTerm //добавляем его к сумме
+            iterations++ //увеличиваем счётчик
+            n++ //увеличиваем н и переходим к следующиму ряду
         }
-
         return Triple(sum, lastTerm, iterations)
     }
 }
