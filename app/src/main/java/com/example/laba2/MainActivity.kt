@@ -58,9 +58,4 @@ class MainActivity : AppCompatActivity() {
 
         return Triple(sum, lastTerm, iterations)
     }
-
-
-
-
-
 }
