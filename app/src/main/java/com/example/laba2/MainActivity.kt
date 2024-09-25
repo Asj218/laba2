@@ -5,6 +5,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import kotlin.math.abs
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,5 +20,16 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val mainNumberEditText = findViewById<EditText>(R.id.main_namber)
+        val calculateButton = findViewById<Button>(R.id.button)
+        val sumTextView = findViewById<TextView>(R.id.label1)
+        val lastTermTextView = findViewById<TextView>(R.id.label2)
+        val iterationsTextView = findViewById<TextView>(R.id.label3)
+
+
+
+
+
     }
 }
