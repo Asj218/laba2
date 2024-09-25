@@ -30,32 +30,26 @@ class MainActivity : AppCompatActivity() {
         calculateButton.setOnClickListener {
             val epsilon = mainNumberEditText.text.toString().toDoubleOrNull()
             if (epsilon != null) {
-                val result = calculateSeries(epsilon)
+                var sum = 1.0
+                var lastTerm = 1.0
+                var iterations = 1
+                var n = 2
 
-                sumTextView.text = "Сумма: ${result.first}"
-                lastTermTextView.text = "Последнее слагаемое: ${result.second}"
-                iterationsTextView.text = "Количество повторений: ${result.third}"
+                while (abs(lastTerm) >= epsilon) {
+                    lastTerm = 1.0 / (n * n)
+                    sum += lastTerm
+                    iterations++
+                    n++
+                }
+
+                sumTextView.text = "Сумма: $sum"
+                lastTermTextView.text = "Последнее слагаемое: $lastTerm"
+                iterationsTextView.text = "Количество повторений: $iterations"
             } else {
-                // Обработка ошибки: введено не число
                 sumTextView.text = "Ошибка: Введите число"
                 lastTermTextView.text = ""
                 iterationsTextView.text = ""
             }
         }
-    }
-    //функция для вычисления и возвращения результата
-    private fun calculateSeries(epsilon: Double): Triple<Double, Double, Int> {
-        var sum = 1.0
-        var lastTerm = 1.0
-        var iterations = 1
-        var n = 2 // Начинаем с 1/4
-
-        while (abs(lastTerm) >= epsilon) {
-            lastTerm = 1.0 / (n * n) //вычисляем слогаемое
-            sum += lastTerm //добавляем его к сумме
-            iterations++ //увеличиваем счётчик
-            n++ //увеличиваем н и переходим к следующиму ряду
-        }
-        return Triple(sum, lastTerm, iterations)
     }
 }
