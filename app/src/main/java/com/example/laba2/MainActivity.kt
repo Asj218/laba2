@@ -27,7 +27,21 @@ class MainActivity : AppCompatActivity() {
         val lastTermTextView = findViewById<TextView>(R.id.label2)
         val iterationsTextView = findViewById<TextView>(R.id.label3)
 
+        calculateButton.setOnClickListener {
+            val epsilon = mainNumberEditText.text.toString().toDoubleOrNull()
+            if (epsilon != null) {
+                val result = calculateSeries(epsilon)
 
+                sumTextView.text = "Сумма: ${result.first}"
+                lastTermTextView.text = "Последнее слагаемое: ${result.second}"
+                iterationsTextView.text = "Количество повторений: ${result.third}"
+            } else {
+                // Обработка ошибки: введено не число
+                sumTextView.text = "Ошибка: Введите число"
+                lastTermTextView.text = ""
+                iterationsTextView.text = ""
+            }
+        }
     }
     private fun calculateSeries(epsilon: Double): Triple<Double, Double, Int> {
         var sum = 1.0
