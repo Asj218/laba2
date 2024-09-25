@@ -28,8 +28,25 @@ class MainActivity : AppCompatActivity() {
         val iterationsTextView = findViewById<TextView>(R.id.label3)
 
 
-
-
-
     }
+    private fun calculateSeries(epsilon: Double): Triple<Double, Double, Int> {
+        var sum = 1.0
+        var lastTerm = 1.0
+        var iterations = 1
+        var n = 2 // Начинаем с 1/4
+
+        while (abs(lastTerm) >= epsilon) {
+            lastTerm = 1.0 / (n * n)
+            sum += lastTerm
+            iterations++
+            n++
+        }
+
+        return Triple(sum, lastTerm, iterations)
+    }
+
+
+
+
+
 }
